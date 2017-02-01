@@ -22,13 +22,13 @@
                     <th>总金额</th>
                     <th>编辑</th>
                 </tr>
-                <tr>
+                <tr v-for="item in cartList">
                     <td class="goods-detial-wrap">
                         <div class="checkbox-wrap left"><span class="checkbox checked"></span></div>
                         <div class="goods-detial right">
                             <div class="good-img left"><img src="img/test.jpg"/></div>
                             <div class="good-text left">
-                                <div class="name">喵星人</div>
+                                <div class="name" v-text="item.name">喵星人</div>
                                 <dl class="gifts">
                                     <dt>赠送：</dt>
                                     <dd>萌萌</dd>
@@ -36,13 +36,13 @@
                             </div>
                         </div>
                     </td>
-                    <td class="unitprice">19</td>
+                    <td class="unitprice" v-text="item.price">19</td>
                     <td class="buy-num">
                         <div class="choosenum-handler"><i class="icon-minus"></i><span class="countbox">2</span><i
                                 class="icon-plus"></i></div>
                         <div class="stock onsell"></div>
                     </td>
-                    <td class="amount">0</td>
+                    <td class="amount" v-text="item.amount">0</td>
                     <td class="icon icon-delete"></td>
                 </tr>
             </table>
@@ -61,4 +61,7 @@
     </div>
 </div>
 </body>
+<script type="text/javascript" src="scripts/vue.js"></script>
+<script type="text/javascript" src="scripts/vue-resource.js"></script>
+<script type="text/javascript" src="scripts/cart.js"></script>
 </html>
