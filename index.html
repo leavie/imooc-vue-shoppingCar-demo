@@ -38,11 +38,11 @@
                     </td>
                     <td class="unitprice" v-text="item.price">19</td>
                     <td class="buy-num">
-                        <div class="choosenum-handler"><i class="icon-minus"></i><span class="countbox">2</span><i
+                        <div class="choosenum-handler"><i class="icon-minus"></i><span class="countbox" v-text="item.quantity">2</span><i
                                 class="icon-plus"></i></div>
                         <div class="stock onsell"></div>
                     </td>
-                    <td class="amount" v-text="item.amount">0</td>
+                    <td class="amount" >0</td>
                     <td class="icon icon-delete"></td>
                 </tr>
             </table>

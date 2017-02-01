@@ -2,23 +2,23 @@
 	{
 		"name": "小爆蝦"
 		, "price": 20
-		, "amount": 10
+		, "quantity": 100
 	}
 	, {
 		"name": "小爆蝦"
 		, "price": 20
-		, "amount": 10
+		, "quantity": 10
 
 	}
 	, {
 		"name": "小爆蝦"
 		, "price": 20
-		, "amount": 10
+		, "quantity": 10
 
 	}
 	, {
 		"name": "小爆蝦"
 		, "price": 20
-		, "amount": 10
+		, "quantity": 10
 	}
 ]
