@@ -24,25 +24,26 @@
                 </tr>
                 <tr v-for="item in cartList">
                     <td class="goods-detial-wrap">
-                        <div class="checkbox-wrap left"><span class="checkbox checked"></span></div>
+                        <div class="checkbox-wrap left"><span class="checkbox" :class="{'checked': item.isChecked}" @click="checkItem(item)"></span></div>
                         <div class="goods-detial right">
                             <div class="good-img left"><img src="img/test.jpg"/></div>
                             <div class="good-text left">
                                 <div class="name" v-text="item.name">喵星人</div>
-                                <dl class="gifts">
-                                    <dt>赠送：</dt>
-                                    <dd>萌萌</dd>
+                                <dl class="gifts" v-for="(part, index) in item.parts">
+                                    <dt :style="{visibility: index == 0 ? 'visible' : 'hidden'}" >赠送：</dt>
+                                    <dd v-text="part">萌萌</dd>
                                 </dl>
                             </div>
                         </div>
                     </td>
                     <td class="unitprice" v-text="item.price">19</td>
                     <td class="buy-num">
-                        <div class="choosenum-handler"><i class="icon-minus"></i><span class="countbox" v-text="item.quantity">2</span><i
-                                class="icon-plus"></i></div>
+                        <div class="choosenum-handler"><i class="icon-minus" @click="item.quantity <= 0 ? 0 : item.quantity--"></i>
+                            <span class="countbox" v-text="item.quantity">2</span>
+                            <i class="icon-plus" @click="item.quantity++"></i></div>
                         <div class="stock onsell"></div>
                     </td>
-                    <td class="amount" >0</td>
+                    <td class="amount" >{{item.quantity * item.price}}</td>
                     <td class="icon icon-delete"></td>
                 </tr>
             </table>
