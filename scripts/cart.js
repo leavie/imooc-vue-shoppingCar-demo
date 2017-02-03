@@ -3,10 +3,10 @@ var vm = new Vue({
 	, data: {
         cartList: []
 	}
-	, mounted: {
+	, created: function () {
 
 	}
-	, created: function() {
+	, mounted: function() {
 		this.$nextTick(function(){
 			this.loadView()
 		})
@@ -22,5 +22,12 @@ var vm = new Vue({
                 self.cartList = response.body
 			})
 		}
+		, checkItem: function (item) {
+			if (typeof item.isChecked == "undefined") {
+				this.$set(item, 'isChecked', true)
+			} else {
+				item.isChecked = !item.isChecked;
+			 }
+		}
 	}
-})
+});
