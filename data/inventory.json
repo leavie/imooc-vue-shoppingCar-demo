@@ -1,15 +1,15 @@
 [
 	{
 		"name": "小爆蝦"
-		, "price": 999
-		, "quantity": 100
-        , "parts": ["神大人","bug","烏賊娘"]
+		, "price": 30
+		, "quantity": 10
+        , "parts": ["艾露西","烏賊娘"]
 	}
 	, {
 		"name": "鄉村蝙蝠俠"
-		, "price": 388
-		, "quantity": 10
-        , "parts": ["vip職業", "吉祥三寶"]
+		, "price": 328
+		, "quantity": 1
+        , "parts": ["vip", "吉祥三寶"]
 
 	}
 	, {
@@ -21,14 +21,14 @@
 	}
 	, {
 		"name": "Bug"
-		, "price": 120
-		, "quantity": 10
-        , "parts": ["Ubi Soft", "Ubi Soft", "Ubi Soft", "Ubi Soft", "Ubi Soft", "Ubi Soft", "Ubi Soft", "Ubi Soft", "Ubi Soft", "Ubi Soft", "Ubi Soft"]
+		, "price": 1
+		, "quantity": 1
+        , "parts": ["Ubi Soft", "Ubi Soft", "Ubi Soft", "Ubi Soft"]
 	}
     , {
 		"name": "女裝"
-		, "price": 120
-		, "quantity": 10
+		, "price": 666
+		, "quantity": 1
         , "parts": ["山脈", "海峽"]
 	}
 ]
