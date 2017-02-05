@@ -40,7 +40,8 @@ var vm = new Vue({
             }
         }
         , checkAll: function (isAllChecked) {
-            if(this.allChecked == isAllChecked) return
+            // FIXME: allChecked status need be changed with every item check
+            // if(this.allChecked == isAllChecked) return
             this.allChecked = isAllChecked;
             this.cartList.forEach(function (item) {
                 console.log('checkAll')
