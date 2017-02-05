@@ -26,9 +26,9 @@ var vm = new Vue({
                 self.cartList = response.body
             })
         }
-        , getPrice: function (item) {
-            return item.price * item.quantity
-        }
+            , getPrice: function (item) {
+                return item.price * item.quantity
+            }
         , toggleItem: function (item, force/*optional*/) { // 切換當前商品選取狀態，或者強迫(不）選取
             if (typeof item.isChecked == "undefined") {
                 this.$set(item, 'isChecked', false)
@@ -40,8 +40,10 @@ var vm = new Vue({
             }
         }
         , checkAll: function (isAllChecked) {
+            if(this.allChecked == isAllChecked) return
             this.allChecked = isAllChecked;
             this.cartList.forEach(function (item) {
+                console.log('checkAll')
                 this.toggleItem(item, isAllChecked)
             }, this)
         }
@@ -49,9 +51,17 @@ var vm = new Vue({
             var index = this.cartList.indexOf(item); // using id will be better
             this.cartList.splice(index,1); // alternate in place
         }
+        , changeQuantity: function (item, way) {
+            item.quantity += way;
+            var underflow = item.quantity <= 0;
+            if (underflow)
+                item.quantity = 0;
+            this.toggleItem(item, !underflow)
+        }
         , totalMoney: function () {
             var total = 0;
             this.cartList.forEach(function(item){
+                console.log('totalMoney');
                 if (item.isChecked)
                     total += this.getPrice(item);
             }, this); // this is vm

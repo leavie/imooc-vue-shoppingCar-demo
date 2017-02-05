@@ -38,9 +38,9 @@
                     </td>
                     <td class="unitprice" v-text="item.price">19</td>
                     <td class="buy-num">
-                        <div class="choosenum-handler"><i class="icon-minus" @click="item.quantity <= 0 ? 0 : item.quantity--"></i>
+                        <div class="choosenum-handler"><i class="icon-minus"  @click="changeQuantity(item, -1)"></i>
                             <span class="countbox" v-text="item.quantity">2</span>
-                            <i class="icon-plus" @click="item.quantity++"></i></div>
+                            <i class="icon-plus" @click="changeQuantity(item, 1)"></i></div>
                         <div class="stock onsell"></div>
                     </td>
                     <td class="amount" v-text="getPrice(item)"></td>
