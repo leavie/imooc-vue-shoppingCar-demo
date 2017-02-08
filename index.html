@@ -62,10 +62,11 @@
     </div>
 </div>
 <!-- modal-dialogue -->
-<div id="md">
+<div id="md-wrapper">
 <modal-dialogue title="真的要刪除？" message="刪除後無法復原！" yes="刪除" no="取消"></modal-dialogue>
 </div>
 </body>
+<!-- modal-dialogue x-template -->
 <script type="text/x-template" id="modal-dialogue">
   <div class="main-wrapper" v-show="isShow">
     <div class="dialogue-cover"></div>
@@ -142,6 +143,7 @@
 </style>
 <script type="text/javascript" src="scripts/vue.js"></script>
 <script type="text/javascript" src="scripts/vue-resource.js"></script>
+<!-- global component and new Vue instance mount on DOM-->
 <script type="text/javascript">
 Vue.component('modal-dialogue', {
     template: '#modal-dialogue',
@@ -161,7 +163,7 @@ Vue.component('modal-dialogue', {
     }
 })
 var md = new Vue({
-    el: "#md"
+    el: "#md-wrapper"
 })
 </script>
 <script type="text/javascript" src="scripts/cart.js"></script>
