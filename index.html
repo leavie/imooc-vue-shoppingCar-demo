@@ -60,12 +60,12 @@
             </footer>
         </form>
     </div>
-</div>
 <!-- modal-dialogue -->
 <div id="md-wrapper">
 <modal-dialogue title="真的要刪除？" message="刪除後無法復原！" yes="刪除" no="取消"></modal-dialogue>
 </div>
 </body>
+</div>
 <!-- modal-dialogue x-template -->
 <script type="text/x-template" id="modal-dialogue">
   <div class="main-wrapper" v-show="isShow">
@@ -75,7 +75,7 @@
         <p class="title" v-text="title || 'Title'"></p>
         <p class="message" v-text="message || 'Message'"></p>
         <div class="action">
-          <p class="item">
+          <p class="item emergency">
             <button key="yes" v-text="yes || 'Yes'"
             v-on:click="toogleModal"
             v-bind:options="{state:2, size:2}" ></button>
@@ -91,7 +91,22 @@
   </div>
 </div>
 </script>
-<style scoped>
+<!-- button style -->
+<style>
+#md-wrapper button {
+    width: 95%;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 0px;
+    cursor: pointer;
+}
+#md-wrapper .emergency button{
+    background: #FF2E41;
+    color: white;
+}
+</style>
+<!-- modal-dialgoue style -->
+<style>
 .main-wrapper {
   margin: 0;
   padding: 0;
@@ -110,7 +125,7 @@
   box-sizing: border-box;
   position: absolute;
   margin: auto;
-  top: 50%;
+  top: 50vh;
   left: 0;
   right: 0;
   transform: translateY(-50%);
@@ -118,8 +133,10 @@
   z-index: 1;
 }
 .dialogue {
+  box-sizing: border-box;
   width: 100%;
-  height: 180px;
+  min-width: 450px;
+  height: 250px;
   margin: 0 5px;
   position: relative;
   background: #fff;
@@ -139,6 +156,13 @@
   flex: 1;
   width: 50%;
   padding: 0 5px;
+}
+</style>
+<!-- override some parent property -->
+<style>
+#container {
+    position: relative;
+    max-width: none;
 }
 </style>
 <script type="text/javascript" src="scripts/vue.js"></script>
