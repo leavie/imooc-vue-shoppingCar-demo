@@ -7,15 +7,15 @@ Vue.component('modal-dialogue', {
     data() {
       return {
         msg: 'msg',
-        isShow: true,
+        isShow: true
       }
     },
     methods: {
-      toogleModal() {
+      toggleModal() {
         this.isShow = !this.isShow
-      },
+      }
     }
-})
+});
 var md = new Vue({
     el: "#md-wrapper"
-})
+});

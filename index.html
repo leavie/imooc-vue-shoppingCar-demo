@@ -6,7 +6,39 @@
     <link rel="stylesheet" href="style/main.css"/>
     <link rel="stylesheet" href="font/fonts/font.css"/>
     <link rel="stylesheet" href="style/bg-color.css"/>
-    <link rel="stylesheet" href="style/style1.css"/>
+    <link rel="stylesheet" href="style/style1.css"/><!-- modal-dialogue x-template -->
+    <link rel="stylesheet" type="text/css" href="components/modal-dialogue/style.css">
+    <!-- override parent property -->
+    <style>
+        #container {
+            position: relative;
+            max-width: none;
+        }
+    </style>
+    <script type="text/x-template" id="modal-dialogue" src="components/modal-dialogue/template.js">
+        <div class="main-wrapper" v-show="isShow">
+            <div class="dialogue-cover"></div>
+            <div class="dialogue-frame">
+                <div class="dialogue">
+                    <p class="title" v-text="title || 'Title'"></p>
+                    <p class="message" v-text="message || 'Message'"></p>
+                    <div class="action">
+                        <p class="item emergency">
+                            <button key="yes" v-text="yes || 'Yes'"
+                            v-on:click="toggleModal"
+                            v-bind:options="{state:2, size:2}" ></button>
+                        </p>
+                        <p class="item">
+                            <button key="no"  v-text="no || 'No'"
+                            v-on:click="toggleModal"
+                            v-bind:options="{state:0, size:2}"></button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </script>
 </head>
 <body>
 <div id="container">
@@ -66,39 +98,6 @@
     </div>
 </div>
 </body>
-<!-- modal-dialogue x-template -->
-<script type="text/x-template" id="modal-dialogue" src="components/modal-dialogue/template.js">
-  <div class="main-wrapper" v-show="isShow">
-    <div class="dialogue-cover"></div>
-    <div class="dialogue-frame">
-      <div class="dialogue">
-        <p class="title" v-text="title || 'Title'"></p>
-        <p class="message" v-text="message || 'Message'"></p>
-        <div class="action">
-          <p class="item emergency">
-            <button key="yes" v-text="yes || 'Yes'"
-            v-on:click="toogleModal"
-            v-bind:options="{state:2, size:2}" ></button>
-          </p>
-          <p class="item">
-            <button key="no"  v-text="no || 'No'"
-            v-on:click="toogleModal"
-            v-bind:options="{state:0, size:2}"></button>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</script>
-<link rel="stylesheet" type="text/css" href="components/modal-dialogue/style.css">
-<!-- override some parent property -->
-<style>
-#container {
-    position: relative;
-    max-width: none;
-}
-</style>
 <script type="text/javascript" src="scripts/vue.js"></script>
 <script type="text/javascript" src="scripts/vue-resource.js"></script>
 <script type="text/javascript" src="components/modal-dialogue/script.js"></script>
