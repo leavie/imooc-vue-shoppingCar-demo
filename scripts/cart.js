@@ -44,7 +44,7 @@ var vm = new Vue({
             // if(this.allChecked == isAllChecked) return
             this.allChecked = isAllChecked;
             this.cartList.forEach(function (item) {
-                console.log('checkAll')
+                console.log('checkAll');
                 this.toggleItem(item, isAllChecked)
             }, this)
         }
