@@ -26,7 +26,7 @@
                     <div class="action">
                         <p class="item emergency">
                             <button key="yes" v-text="yes || 'Yes'"
-                            v-on:click="toggleModal"
+                            v-on:click="confirmDeletion"
                             v-bind:options="{state:2, size:2}" ></button>
                         </p>
                         <p class="item">
@@ -76,7 +76,7 @@
                         <div class="stock onsell"></div>
                     </td>
                     <td class="amount" v-text="getPrice(item)"></td>
-                    <td class="icon icon-delete" @click="deleteItem(item)"></td>
+                    <td class="icon icon-delete" @click="requestDeletion(item)"></td>
                 </tr>
             </table>
             <footer class="checkout-wrap">
@@ -100,6 +100,7 @@
 </body>
 <script type="text/javascript" src="scripts/vue.js"></script>
 <script type="text/javascript" src="scripts/vue-resource.js"></script>
+<script type="text/javascript" src="scripts/eventHub.js"></script>
 <script type="text/javascript" src="components/modal-dialogue/script.js"></script>
 <script type="text/javascript" src="scripts/cart.js"></script>
 </html>

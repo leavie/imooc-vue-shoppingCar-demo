@@ -6,9 +6,11 @@ var vm = new Vue({
     , data: {
         cartList: []
         , allChecked: false
+        , willDeleteItem: undefined
     }
     , created: function () {
-        this.$on('onselect', this.alert); // not be applied yet
+        var self = this
+        eventHub.$on('confirm-deletion', function(sth){self.deleteItem(self.willDeleteItem)}); // not be applied yet
     }
     , mounted: function() {
         this.$nextTick(function(){
@@ -50,6 +52,7 @@ var vm = new Vue({
         }
         , deleteItem: function(item) {
             var index = this.cartList.indexOf(item); // using id will be better
+            if (index == -1) return
             this.cartList.splice(index,1); // alternate in place
         }
         , changeQuantity: function (item, way) {
@@ -67,6 +70,10 @@ var vm = new Vue({
                     total += this.getPrice(item);
             }, this); // this is vm
             return total;
+        }
+        , requestDeletion: function (item) {
+            this.willDeleteItem = item
+            eventHub.$emit('request-deletion', item)
         }
     }
 });
