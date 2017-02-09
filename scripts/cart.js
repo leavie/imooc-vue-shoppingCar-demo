@@ -9,8 +9,8 @@ var vm = new Vue({
         , willDeleteItem: undefined
     }
     , created: function () {
-        var self = this
-        eventHub.$on('confirm-deletion', function(sth){self.deleteItem(self.willDeleteItem)}); // not be applied yet
+        var self = this;
+        eventHub.$on('confirm-deletion', function(sth){self.deleteItem(self.willDeleteItem)}); // Lengthy
     }
     , mounted: function() {
         this.$nextTick(function(){
@@ -28,9 +28,9 @@ var vm = new Vue({
                 self.cartList = response.body
             })
         }
-            , getPrice: function (item) {
-                return item.price * item.quantity
-            }
+        , getPrice: function (item) {
+            return item.price * item.quantity
+        }
         , toggleItem: function (item, force/*optional*/) { // 切換當前商品選取狀態，或者強迫(不）選取
             if (typeof item.isChecked == "undefined") {
                 this.$set(item, 'isChecked', false)
@@ -52,7 +52,7 @@ var vm = new Vue({
         }
         , deleteItem: function(item) {
             var index = this.cartList.indexOf(item); // using id will be better
-            if (index == -1) return
+            if (index == -1) return;
             this.cartList.splice(index,1); // alternate in place
         }
         , changeQuantity: function (item, way) {
@@ -72,7 +72,7 @@ var vm = new Vue({
             return total;
         }
         , requestDeletion: function (item) {
-            this.willDeleteItem = item
+            this.willDeleteItem = item;
             eventHub.$emit('request-deletion', item)
         }
     }
