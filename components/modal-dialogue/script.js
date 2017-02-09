@@ -2,24 +2,30 @@
 Vue.component('modal-dialogue', {
     template: '#modal-dialogue',
     name: 'modal-dialogue',
-    props: ['title', 'message', 'yes', 'no'],
+    props: ['title', 'message', 'yesText', 'noText'],
     // components: { RoundedButton },
-    created: function () {
-        eventHub.$on('request-deletion', this.toggleModal)
+    created() {
+        eventHub.$on('request', this.prepare)
     },
     data() {
         return {
-            msg: 'msg',
-            isShow: false
+            isShow: false,
+            task: undefined,
+            target: undefined
         }
     },
     methods: {
+        prepare(fn, item) {
+            this.task = fn;
+            this.target = item;
+            this.toggleModal()
+        },
         toggleModal() {
             this.isShow = !this.isShow
         },
-        confirmDeletion() {
-            eventHub.$emit('confirm-deletion')
-            this.toggleModal();
+        confirm() {
+            this.task(this.target);
+            this.toggleModal()
         }
     }
 });

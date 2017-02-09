@@ -6,11 +6,8 @@ var vm = new Vue({
     , data: {
         cartList: []
         , allChecked: false
-        , willDeleteItem: undefined
     }
     , created: function () {
-        var self = this;
-        eventHub.$on('confirm-deletion', function(sth){self.deleteItem(self.willDeleteItem)}); // Lengthy
     }
     , mounted: function() {
         this.$nextTick(function(){
@@ -72,8 +69,7 @@ var vm = new Vue({
             return total;
         }
         , requestDeletion: function (item) {
-            this.willDeleteItem = item;
-            eventHub.$emit('request-deletion', item)
+            eventHub.$emit('request', this.deleteItem, item)
         }
     }
 });

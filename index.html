@@ -25,12 +25,12 @@
                     <p class="message" v-text="message || 'Message'"></p>
                     <div class="action">
                         <p class="item emergency">
-                            <button key="yes" v-text="yes || 'Yes'"
-                            v-on:click="confirmDeletion"
+                            <button key="yes" v-text="yesText || 'Yes'"
+                            v-on:click="confirm"
                             v-bind:options="{state:2, size:2}" ></button>
                         </p>
                         <p class="item">
-                            <button key="no"  v-text="no || 'No'"
+                            <button key="no"  v-text="noText || 'No'"
                             v-on:click="toggleModal"
                             v-bind:options="{state:0, size:2}"></button>
                         </p>
@@ -94,7 +94,7 @@
     </div>
     <!-- modal-dialogue -->
     <div id="md-wrapper">
-    <modal-dialogue title="真的要刪除？" message="刪除後無法復原！" yes="刪除" no="取消"></modal-dialogue>
+    <modal-dialogue title="真的要刪除？" message="刪除後無法復原！" yesText="刪除" noText="取消"></modal-dialogue>
     </div>
 </div>
 </body>
