@@ -7,12 +7,16 @@
     <link rel="stylesheet" href="font/fonts/font.css"/>
     <link rel="stylesheet" href="style/bg-color.css"/>
     <link rel="stylesheet" href="style/style1.css"/>
-    <link rel="stylesheet" type="text/css" href="components/modal-dialogue/style.css"><!--FIXME: modal will shrank down with decreasing list-->
+    <link rel="stylesheet" href="components/modal-dialogue/style.css">
     <!-- override parent property -->
     <style>
-        #container {
+        body {
+            height: initial;
             position: relative;
-            max-width: none;
+        }
+        #container {
+            /*position: relative;*/
+            /*max-width: none;*/
         }
     </style>
     <!-- modal-dialogue x-template -->
@@ -92,11 +96,11 @@
             </footer>
         </form>
     </div>
+</div>
     <!-- modal-dialogue -->
     <div id="md-wrapper">
     <modal-dialogue title="真的要刪除？" message="刪除後無法復原！" yesText="刪除" noText="取消"></modal-dialogue>
     </div>
-</div>
 </body>
 <script type="text/javascript" src="scripts/vue.js"></script>
 <script type="text/javascript" src="scripts/vue-resource.js"></script>
