@@ -5,7 +5,6 @@ var vm = new Vue({
     , el: '#shoppingCar'
     , data: {
         cartList: []
-        , allChecked: false
     }
     , created: function () {
     }
@@ -15,7 +14,9 @@ var vm = new Vue({
         })
     }
     , computed: {
-
+        allChecked: function() {
+            return this.cartList.filter(elt=>elt.isChecked).length == this.cartList.length
+        }
     }
     , methods: {
         loadCart: function() {
@@ -38,9 +39,7 @@ var vm = new Vue({
             }
         }
         , checkAll: function (isAllChecked) {
-            // FIXME: allChecked status need be changed with every item check
-            // if(this.allChecked == isAllChecked) return
-            this.allChecked = isAllChecked;
+            if(this.allChecked == isAllChecked) return;
             this.cartList.forEach(function (item) {
                 console.log('checkAll');
                 this.toggleItem(item, isAllChecked)
