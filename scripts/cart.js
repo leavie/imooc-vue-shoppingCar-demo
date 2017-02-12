@@ -15,6 +15,8 @@ var vm = new Vue({
     }
     , computed: {
         allChecked: function() {
+            if (this.cartList.length == 0)
+                return false
             return this.cartList.filter(elt=>elt.isChecked).length == this.cartList.length
         }
     }
