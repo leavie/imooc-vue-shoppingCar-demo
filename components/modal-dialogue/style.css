@@ -28,7 +28,7 @@
 }
 .dialogue-frame {
   box-sizing: border-box;
-  position: absolute;
+  position: fixed;
   margin: auto;
   top: 50vh;
   left: 0;
