@@ -33,11 +33,15 @@
   top: 50vh;
   left: 0;
   right: 0;
-  transform: translateY(-50%);
+
+  transition: all linear .8s 5s;
   z-index: 1;
   width: 60%;
   min-width: 370px; /*container's min with 0.9 scale*/
-  max-width: 896px; /*container's max with 0.6 scale*/
+  max-width: 896px; /*container's max with 0.6*/
+}
+.center {
+  transform: translateY(-50%);
 }
 .dialogue {
   box-sizing: border-box;;
@@ -48,7 +52,6 @@
   text-align: center;
   height: 20%;
   padding: 1.5rem 4rem;
-  =: 70%;;
 }
 .dialogue .title {
   font-weight: bold;
