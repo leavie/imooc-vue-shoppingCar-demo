@@ -20,7 +20,7 @@
     <script type="text/x-template" id="modal-dialogue" src="components/modal-dialogue/template.js">
         <div class="main-wrapper" v-show="isShow">
             <div class="dialogue-cover"></div>
-            <div class="dialogue-frame">
+            <div class="dialogue-frame" v-bind:class="{ 'center':isShow }">
                 <div class="dialogue">
                     <p class="title" v-text="title || 'Title'"></p>
                     <p class="message" v-text="message || 'Message'"></p>
