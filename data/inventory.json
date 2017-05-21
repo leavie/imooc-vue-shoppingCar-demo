@@ -31,4 +31,15 @@
 		, "quantity": 1
         , "parts": ["山脈", "海峽"]
 	}
+	, {
+		"name": "Ｃ語言從入門到入土"
+		, "price": 20
+		, "quantity": 1
+        , "parts": ["入院", "入獄"]
+	}	, {
+		"name": "喵星人"
+		, "price": 20
+		, "quantity": 1
+        , "parts": ["喵～", "抓～"]
+	}
 ]
