@@ -34,7 +34,7 @@
   left: 0;
   right: 0;
 
-  transition: all linear .8s 5s;
+  transition: all ease .5s .1s;
   z-index: 1;
   width: 60%;
   min-width: 370px; /*container's min with 0.9 scale*/
