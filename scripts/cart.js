@@ -14,10 +14,10 @@ var vm = new Vue({
         })
     }
     , computed: {
-        allChecked: function() {
-            if (!this.cartList.length) // falsy
-                return false
-            return this.cartList.filter(elt=>elt.isChecked).length == this.cartList.length
+        isAllChecked: function() {
+            if (!this.cartList.length) // 清單為空時，並不是全選狀態
+                return false;
+            return this.cartList.every(elt=>elt.isChecked);
         }
     }
     , methods: {
@@ -30,7 +30,7 @@ var vm = new Vue({
         , getPrice: function (item) {
             return item.price * item.quantity
         }
-        , toggleItem: function (item, force/*optional*/) { // 切換當前商品選取狀態，或者強迫(不）選取
+        , checkItem: function (item, force/*optional*/) { // 切換當前商品選取狀態，或者強迫(不）選取
             if (typeof item.isChecked == "undefined") {
                 this.$set(item, 'isChecked', false)
             }
@@ -40,12 +40,19 @@ var vm = new Vue({
                 item.isChecked = force
             }
         }
-        , checkAll: function (isAllChecked) {
-            if(this.allChecked == isAllChecked) return;
+        , toggleItem: function (item) {
+            this.checkItem(item);
+        }
+        , checkAllItems: function (isAllChecked) {
+            if(this.isAllChecked == isAllChecked) return;
             this.cartList.forEach(function (item) {
-                console.log('checkAll');
-                this.toggleItem(item, isAllChecked)
+                //console.log('checkAllItems');
+                this.checkItem(item, isAllChecked);
             }, this)
+        }
+        ,
+        toggleAllItems: function() {
+            this.checkAllItems(!this.isAllChecked);
         }
         , deleteItem: function(item) {
             var index = this.cartList.indexOf(item); // using id will be better
@@ -57,12 +64,12 @@ var vm = new Vue({
             var underflow = item.quantity <= 0;
             if (underflow)
                 item.quantity = 0;
-            this.toggleItem(item, !underflow)
+            this.checkItem(item, !underflow);
         }
         , totalMoney: function () {
             var total = 0;
             this.cartList.forEach(function(item){
-                console.log('totalMoney');
+                //console.log('totalMoney');
                 if (item.isChecked)
                     total += this.getPrice(item);
             }, this); // this is vm

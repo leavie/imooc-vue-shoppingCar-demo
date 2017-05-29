@@ -82,8 +82,8 @@
             </table>
             <footer class="checkout-wrap">
                 <div class="total-check-wrap left">
-                    <div class="checkbox-wrap left"><span class="checkbox" :class="{checked: allChecked}" @click="checkAll(!allChecked)"></span></div>
-                    <div class="check-text"><span class="checked-all" @click="checkAll(true)">全选</span><span class="unchecked-all" @click="checkAll(false)">取消全选</span>
+                    <div class="checkbox-wrap left"><span class="checkbox" :class="{checked: isAllChecked}" @click="toggleAllItems()"></span></div>
+                    <div class="check-text"><span class="checked-all" @click="checkAllItems(true)">全选</span><span class="unchecked-all" @click="checkAllItems(false)">取消全选</span>
                     </div>
                 </div>
                 <div class="checkout right">
@@ -96,14 +96,13 @@
 </div>
 <!-- modal-dialogue -->
 <div id="md-wrapper">
-    <modal-dialogue title="真的要刪除？" message="刪除後無法復原！" 
+    <modal-dialogue title="真的要刪除？" message="刪除後無法復原！"
     yes-text="刪除" no-text="取消"></modal-dialogue>
 </div>
 </body>
 <script type="text/javascript" src="scripts/vue.js"></script>
 <script type="text/javascript" src="scripts/vue-resource.js"></script>
 <script type="text/javascript" src="scripts/eventHub.js"></script>
-<script type="text/javascript"
-src="components/modal-dialogue/script.js"></script>
 <script type="text/javascript" src="scripts/cart.js"></script>
+<script type="text/javascript" src="components/modal-dialogue/script.js"></script>
 </html>

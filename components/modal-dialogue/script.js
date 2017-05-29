@@ -29,6 +29,6 @@ Vue.component('modal-dialogue', {
         }
     }
 });
-var md = new Vue({
+var mdWrapper = new Vue({
     el: "#md-wrapper"
 });
