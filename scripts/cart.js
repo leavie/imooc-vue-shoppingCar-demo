@@ -23,7 +23,7 @@ var vm = new Vue({
     , methods: {
         loadCart: function() {
             var self = this;
-            this.$http.get('data/inventory.json').then(function(response) { // cannot use post in my environment
+            this.$http.post('data/inventory.php').then(function(response) { // cannot use post in my environment
                 self.cartList = response.body
             })
         }
