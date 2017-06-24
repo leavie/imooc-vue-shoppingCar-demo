@@ -1,8 +1,5 @@
 var vm = new Vue({
-    alert: function(msg) {
-        alert(msg)
-    }
-    , el: '#shoppingCar'
+    el: '#shoppingCar'
     , data: {
         cartList: []
     }
