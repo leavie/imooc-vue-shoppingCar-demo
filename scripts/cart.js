@@ -6,9 +6,7 @@ var vm = new Vue({
     , created: function () {
     }
     , mounted: function() {
-        this.$nextTick(function(){
-            this.loadCart()
-        })
+        this.$nextTick(this.loadCart)
     }
     , computed: {
         isAllChecked: function() {
@@ -57,11 +55,14 @@ var vm = new Vue({
             this.cartList.splice(index,1); // alternate in place
         }
         , changeQuantity: function (item, way) {
-            item.quantity += way;
-            var underflow = item.quantity <= 0;
-            if (underflow)
+            var temp = item.quantity + way;
+            var reset = temp <= 0;
+            if (reset) {
                 item.quantity = 0;
-            this.checkItem(item, !underflow);
+                this.checkItem(item, false);
+            } else {
+                item.quantity = temp;
+            }
         }
         , totalMoney: function () {
             var total = 0;
