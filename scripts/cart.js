@@ -65,7 +65,6 @@ var vm = new Vue({
             var reset = temp <= 0;
             if (reset) {
                 item.quantity = 0;
-                this.checkItem(item, false);
             } else {
                 item.quantity = temp;
             }
