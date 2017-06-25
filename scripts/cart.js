@@ -14,6 +14,15 @@ var vm = new Vue({
                 return false;
             return this.cartList.every(elt=>elt.isChecked);
         }
+        , totalMoney: function () {
+            var total = 0;
+            this.cartList.forEach(function(item){
+                //console.log('totalMoney');
+                if (item.isChecked)
+                    total += this.getPrice(item);
+            }, this); // this is vm
+            return total;
+        }
     }
     , methods: {
         loadCart: function() {
@@ -25,24 +34,21 @@ var vm = new Vue({
         , getPrice: function (item) {
             return item.price * item.quantity
         }
-        , checkItem: function (item, force/*optional*/) { // 切換當前商品選取狀態，或者強迫(不）選取
+        , checkItem: function (item, force) { // 強迫(不）選取
+            if (item.isChecked == force) return;
             if (typeof item.isChecked == "undefined") {
                 this.$set(item, 'isChecked', false)
             }
-            if (force == undefined) {
-                item.isChecked = !item.isChecked;
-            } else {
-                item.isChecked = force
-            }
+                item.isChecked = force;
         }
-        , toggleItem: function (item) {
-            this.checkItem(item);
+        , toggleItem: function (item) { // 切換當前商品的選取狀態
+            this.checkItem(item, !item.isChecked);
         }
-        , checkAllItems: function (isAllChecked) {
-            if(this.isAllChecked == isAllChecked) return;
+        , checkAllItems: function (force) {
+            if(this.isAllChecked == force) return;
             this.cartList.forEach(function (item) {
                 //console.log('checkAllItems');
-                this.checkItem(item, isAllChecked);
+                this.checkItem(item, force);
             }, this)
         }
         ,
@@ -63,15 +69,7 @@ var vm = new Vue({
             } else {
                 item.quantity = temp;
             }
-        }
-        , totalMoney: function () {
-            var total = 0;
-            this.cartList.forEach(function(item){
-                //console.log('totalMoney');
-                if (item.isChecked)
-                    total += this.getPrice(item);
-            }, this); // this is vm
-            return total;
+            this.checkItem(item, !reset);
         }
         , requestDeletion: function (item) {
             eventHub.$emit('request', this.deleteItem, item)
