@@ -1,19 +1,24 @@
 <?php
-		mysql_connect("127.0.0.1", "root", "");
-		mysql_select_db("code_runner");
-
-
-	$insert = "INSERT INTO `inventory` (`Name`, `Price`) VALUES('', '120')";
+session_start();
+?>
+<?php
+	$link = new mysqli("p:"."127.0.0.1", "root", "", "code_runner");
+	mysqli_query($link,"SET NAMES utf8");
+	$_SESSION["link"] = $link;
+		
+	$insert = "INSERT INTO `inventory` (`Name` as name, `Price` as price) VALUES('', '120')";
 	$select = "SELECT * FROM `inventory` WHERE 1";
 	$update;
 	$delete = "DELETE FROM `inventory` WHERE `name` = ''";
 
 	// 查詢
-	$result = mysql_query($select);
+	$result = $link->query($select);
+	if(!$result) return;
+//	echo  var_dump($result);
 
 	// convert 查詢到的表格為 關聯陣列
-    $row = mysql_fetch_assoc($result);
-//test: 查看$$row的類型 // echo var_dump($ta$row);
+    $row = $result->fetch_all(MYSQLI_ASSOC); // https://secure.php.net/manual/en/mysqli-result.fetch-all.php
+    //echo var_dump($row); //test: 查看$row的類型
 
     // converts array to json
 	$json = json_encode($row, JSON_NUMERIC_CHECK);
@@ -22,7 +27,7 @@
 	$lowercase_json = get_lowercase_json($json);
 
 	// 輸出json， 目標為陣列notation
-	echo "[$lowercase_json]";
+	echo "$lowercase_json";
 
 
 
