@@ -1,12 +1,12 @@
 /*button style*/
-#md-wrapper  button {
+.main-wrapper  button {
     width: 95%;
     border: none;
     border-radius: 4px;
     padding: 6px 0;
     cursor: pointer;
 }
-#md-wrapper .emergency button{
+.main-wrapper .emergency button{
     background: #FF2E41;
     color: white;
 }

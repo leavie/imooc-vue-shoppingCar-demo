@@ -1,10 +1,12 @@
 <?php
 session_start();
 ?>
+TODO: 預設一組連線資料庫資訊，假如失敗，便在瀏覽器詢問使用者，再重新連線
 <?php
-	$link = new mysqli("p:"."127.0.0.1", "root", "", "code_runner");
+	$link = new mysqli("127.0.0.1", "root", "Leavie45", ""); // 沒有選擇資料庫
+	if(!$link) die("無法連線");
 	mysqli_query($link,"SET NAMES utf8");
-	$_SESSION["link"] = $link;
+
 		
 	$insert = "INSERT INTO `inventory` (`Name` as name, `Price` as price) VALUES('', '120')";
 	$select = "SELECT * FROM `inventory` WHERE 1";
