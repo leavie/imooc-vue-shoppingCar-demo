@@ -1,13 +1,15 @@
 <?php
 session_start();
 ?>
-TODO: 預設一組連線資料庫資訊，假如失敗，便在瀏覽器詢問使用者，再重新連線
+<!-- TODO: 預設一組連線資料庫資訊，假如失敗，便在瀏覽器詢問使用者，再重新連線
+DO: /htdocs/switch_db_server.php -->
 <?php
-	$link = new mysqli("127.0.0.1", "root", "Leavie45", ""); // 沒有選擇資料庫
+	$server = "127.0.0.1", $user = "root", $password = "Leavie45", $dbname = ""
+	$link = new mysqli($sever, $user, $password, $dbname); // 沒有選擇資料庫
 	if(!$link) die("無法連線");
 	mysqli_query($link,"SET NAMES utf8");
 
-		
+
 	$insert = "INSERT INTO `inventory` (`Name` as name, `Price` as price) VALUES('', '120')";
 	$select = "SELECT * FROM `inventory` WHERE 1";
 	$update;
