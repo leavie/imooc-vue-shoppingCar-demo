@@ -26,23 +26,18 @@ var vm = new Vue({
     }
     , methods: {
         loadCart: function() {
+            console.log('a')
             var self = this;
             this.$http.get('data/inventory.json').then(function(response) { // cannot use post in my environment
-                if(response.body.size == 0) {
-                   console.log(response.body)
-                   return;
-                }
-                var data = response.body
-                var cartList = data;
-                if(!Array.isArray(cartList)) {
-                    cartList = JSON.parse(cartList)
-                    if(!Array.isArray(cartList) || cartList.length == 0) {
-                        console.log(cartList);
-                        return;
-                    }
-                }
-                self.cartList = cartList;
+                self.cartList =
+                Array.isArray(response.body)
+                    ? response.body
+                    : JSON.parse(response.body)
+                console.log('b')
+            }).catch(function(){
+                console.log('catch error')
             })
+            console.log('c')
         }
         , getPrice: function (item) {
             return item.price * item.quantity
