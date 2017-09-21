@@ -36,6 +36,14 @@ var vm = new Vue({
                 console.log('b')
             }).catch(function(){
                 console.log('catch error')
+                self.cartList = [
+                {
+                    name: "error",
+                    price: 100,
+                    quantity: 10,
+                    parts:[]
+                }
+                ]
             })
             console.log('c')
         }
