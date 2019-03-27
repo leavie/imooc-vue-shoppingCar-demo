@@ -74,7 +74,7 @@ var vm = new Vue({
         }
         , changeQuantity: function (item, increment) {
             var newValue = item.quantity + increment;
-            var checkOrNot = temp > 0;
+            var checkOrNot = newValue > 0;
             var resetOrNot = !checkOrNot
             if (resetOrNot) {
                 item.quantity = 0;
