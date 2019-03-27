@@ -39,6 +39,12 @@ var vm = new Vue({
                     price: 100,
                     quantity: 10,
                     parts:[]
+                },
+                {
+                    name: "error",
+                    price: 100,
+                    quantity: 10,
+                    parts:[]
                 }
                 ]
             })
@@ -58,7 +64,6 @@ var vm = new Vue({
             this.checkItem(item, !item.isChecked);
         }
         , checkAllItems: function (checkOrNot) {
-            if(this.isAllChecked == checkOrNot) return;
             this.cartList.forEach(function (item) {
                 this.checkItem(item, checkOrNot);
             }, this)
