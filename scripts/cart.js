@@ -33,6 +33,7 @@ var vm = new Vue({
                     : JSON.parse(response.body)
             }).catch(function(){
                 console.log('catch error')
+                console.log('load sample mock data')
                 self.cartList = [
                 {
                     name: "error",
