@@ -1,3 +1,19 @@
+// error demo cart data
+errorDemoCartData = [
+{
+    name: "error",
+    price: 100,
+    quantity: 10,
+    parts:[1,2,3,4,5,6,7,8,9,0]
+},
+{
+    name: "error",
+    price: 100,
+    quantity: 10,
+    parts:[1,2,3,4,5,6,7]
+}
+]
+
 var vm = new Vue({
     el: '#shoppingCar'
     , data: {
@@ -19,7 +35,7 @@ var vm = new Vue({
             this.cartList.forEach(function(item){
                 if (item.isChecked)
                     total += this.getPrice(item);
-            }, this); // this is vm
+            }, this);
             return total;
         }
     }
@@ -29,25 +45,11 @@ var vm = new Vue({
             this.$http.get('data/inventory.json').then(function(response) { // cannot use post in my environment
                 self.cartList =
                 Array.isArray(response.body)
-                    ? response.body
-                    : JSON.parse(response.body)
+                ? response.body
+                : JSON.parse(response.body)
             }).catch(function(){
-                console.log('catch error')
-                console.log('load sample mock data')
-                self.cartList = [
-                {
-                    name: "error",
-                    price: 100,
-                    quantity: 10,
-                    parts:[]
-                },
-                {
-                    name: "error",
-                    price: 100,
-                    quantity: 10,
-                    parts:[]
-                }
-                ]
+                console.error('catch error: load error demo cart')
+                self.cartList = errorDemoCartData
             })
         }
         , getPrice: function (item) {
