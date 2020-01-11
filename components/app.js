@@ -1,5 +1,5 @@
 // error demo cart data
-errorDemoCartData = [
+var errorDemoCartData = [
 {
     name: "error",
     price: 100,
@@ -13,12 +13,13 @@ errorDemoCartData = [
     parts:[1,2,3,4,5,6,7]
 }
 ]
-
+import ModalDialogue from './modal-dialogue/script.js'
 var vm = new Vue({
     el: '#shoppingCar'
     , data: {
         cartList: []
-    }
+    },
+    components: {ModalDialogue}
     , created: function () {
     }
     , mounted: function() {
@@ -92,7 +93,7 @@ var vm = new Vue({
             this.checkItem(item, checkOrNot);
         }
         , requestDeletion: function (item) {
-            eventHub.$emit('request', this.deleteItem, item)
+            this.$root.$emit('request', this.deleteItem, item)
         }
     }
 });

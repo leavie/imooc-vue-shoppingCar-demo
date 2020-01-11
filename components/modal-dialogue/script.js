@@ -1,5 +1,5 @@
 // global component and new Vue instance mount on DOM
-Vue.component('modal-dialogue', {
+export default {
     template: `
     <div class="main-wrapper" v-show="isShow">
         <div class="dialogue-cover"></div>
@@ -25,7 +25,7 @@ Vue.component('modal-dialogue', {
     props: ['title', 'message', 'yesText', 'noText'],
     // components: { RoundedButton },
     created() {
-        eventHub.$on('request', this.prepare)
+        this.$root.$on('request', this.prepare)
     },
     data() {
         return {
@@ -48,7 +48,4 @@ Vue.component('modal-dialogue', {
             this.toggleModal()
         }
     }
-});
-var mdWrapper = new Vue({
-    el: "#md-wrapper"
-});
+};
